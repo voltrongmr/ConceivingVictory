@@ -41,16 +41,16 @@ const TIMES = ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00", "18:30"];
 
 const TESTIMONIALS = [
   {
-    quote: "I'd never tried therapy before. Booking online made it feel less scary, and my therapist made it feel like a conversation with someone who actually got it.",
-    name: "Amara K.", role: "Sessions since March",
+    quote: "CEO Marcene is an outstanding therapist -- extremely gifted, compassionate, professional, and caring. She has made a tremendous difference in my life, and taught me much, much more than I anticipated. I highly recommend her. She will absolutely deliver on what you are seeking.",
+    name: "Kristen D.", role: "Insider Pages Review",
   },
   {
-    quote: "We did a family session to work through some stuff. It was the first time we all actually listened to each other. A real turning point.",
-    name: "Martinez Family", role: "Family Session",
+    quote: "I consider myself extremely lucky to have encountered Marcene to guide me during a most difficult time. She is caring, illuminating and always knew exactly which direction to go. Yet, she was gentle enough to let me proceed as the way opened.",
+    name: "R.", role: "Insider Pages Review",
   },
   {
-    quote: "We did couples sessions for three months. It didn't fix everything overnight, but we finally have the words for what we'd been feeling.",
-    name: "Priya & Sam", role: "Couples Session",
+    quote: "Marcene Marcus is a truly outstanding family and individual counselor. She is knowledgeable, competent, and highly understanding. Her compassion is readily evident. Her 'getting to the heart of the matter' is quick and comprehensive. Highly recommend her to you.",
+    name: "Clark", role: "Insider Pages Review",
   },
 ];
 
