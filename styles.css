@@ -528,9 +528,9 @@ h1, h2, h3, h4, h5 {
   display: grid; gap: 2.5rem;
 }
 @media (min-width: 768px) {
-  .footer-grid { grid-template-columns: 2fr 1fr 1fr; padding: 5rem 2.5rem 2rem; }
+  .footer-grid { grid-template-columns: 3fr 1fr 1fr; padding: 5rem 2.5rem 2rem; }
 }
-.footer-brand p { margin-top: 1.25rem; color: hsl(39 45% 97% / 0.7); max-width: 24rem; line-height: 1.65; }
+.footer-brand p { margin-top: 1.25rem; color: hsl(39 45% 97% / 0.7); max-width: 32rem; line-height: 1.5; font-size: 0.875rem; }
 .footer-heading {
   font-size: 0.875rem;
   margin-bottom: 1rem; color: hsl(39 45% 97% / 0.6);

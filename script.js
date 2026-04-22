@@ -38,20 +38,20 @@ const SESSIONS = [
   },
 ];
 
-const TIMES = ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00", "18:30"];
+const TIMES = ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00", "18:30", "21:00"];
 
 const TESTIMONIALS = [
   {
-    quote: "CEO Marcene is an outstanding therapist -- extremely gifted, compassionate, professional, and caring. She has made a tremendous difference in my life, and taught me much, much more than I anticipated. I highly recommend her. She will absolutely deliver on what you are seeking.",
-    name: "Kristen D.", role: "Insider Pages Review",
+    quote: "Marcene is an outstanding therapist -- extremely gifted, compassionate, professional, and caring. She has made a tremendous difference in my life, and taught me much, much more than I anticipated. I highly recommend her. She will absolutely deliver on what you are seeking.",
+    name: "Kristen D.", role: "CEO",
   },
   {
     quote: "I consider myself extremely lucky to have encountered Marcene to guide me during a most difficult time. She is caring, illuminating and always knew exactly which direction to go. Yet, she was gentle enough to let me proceed as the way opened.",
-    name: "R.", role: "Insider Pages Review",
+    name: "R.", role: "Journeyman",
   },
   {
     quote: "Marcene Marcus is a truly outstanding family and individual counselor. She is knowledgeable, competent, and highly understanding. Her compassion is readily evident. Her 'getting to the heart of the matter' is quick and comprehensive. Highly recommend her to you.",
-    name: "Clark", role: "Insider Pages Review",
+    name: "Clark", role: "Pastor",
   },
 ];
 
@@ -132,20 +132,26 @@ const nextBtn = document.getElementById("next-btn");
 function getSession() { return SESSIONS.find(s => s.id === state.sessionId); }
 
 function getNextDays(count) {
-  const out = [];
-  const today = new Date();
-  for (let i = 1; i <= count; i++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() + i);
-    out.push({
-      date: d,
-      label: d.toLocaleDateString(undefined, { weekday: "short" }),
-      sub: d.toLocaleDateString(undefined, { day: "numeric", month: "short" }),
-    });
-  }
-  return out;
+  // Only return the specific requested days
+  return [
+    {
+      label: "Fri",
+      sub: "Apr 24",
+      availableTimes: ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00", "18:30"]
+    },
+    {
+      label: "Sat", 
+      sub: "Apr 25",
+      availableTimes: ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00", "18:30"]
+    },
+    {
+      label: "Sun",
+      sub: "Apr 26", 
+      availableTimes: ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00", "18:30"]
+    }
+  ];
 }
-const DAYS = getNextDays(7);
+const DAYS = getNextDays();
 
 /* ----- Session list ----- */
 const sessionList = document.getElementById("session-list");
@@ -182,7 +188,11 @@ function renderDateTime() {
       <p class="d-sub">${d.sub}</p>
     </button>
   `).join("");
-  timeGrid.innerHTML = TIMES.map(t => `
+
+  const selectedDay = DAYS[state.dayIndex];
+  const availableTimes = selectedDay ? selectedDay.availableTimes : [];
+  
+  timeGrid.innerHTML = availableTimes.map(t => `
     <button class="time-btn ${state.time === t ? "selected" : ""}" data-time="${t}">${t}</button>
   `).join("");
   dayGrid.querySelectorAll("[data-day]").forEach(b => b.addEventListener("click", () => {
