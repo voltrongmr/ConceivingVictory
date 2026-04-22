@@ -6,20 +6,21 @@
 /* ---------- Data ---------- */
 const SESSIONS = [
   {
-    id: "single",
-    name: "Individual Therapy",
+    id: "individual",
+    name: "Individual Therapy OR Clinical Consultation",
     duration: "50 minutes",
-    price: 89,
+    price: 180,
     desc: "A one-off conversation. Perfect to dip your toes in or talk through something specific.",
     features: ["Licensed therapist", "Private video room", "Session notes after"],
     featured: true,
     perMonth: false,
+    footnote: "Clinical Supervision consult — free to ASWs, AMFTs.",
   },
   {
     id: "family",
     name: "Family Session",
     duration: "75 minutes",
-    price: 149,
+    price: 200,
     desc: "The whole family in one room. Work through dynamics together with a trained family therapist.",
     features: ["Family dynamics expertise", "Communication frameworks", "Action plan together"],
     featured: false,
@@ -29,7 +30,7 @@ const SESSIONS = [
     id: "couples",
     name: "Couples Session",
     duration: "75 minutes",
-    price: 129,
+    price: 200,
     desc: "Two of you, one therapist, a shared space to actually be heard by each other.",
     features: ["Both partners on call", "Communication frameworks", "Follow-up plan"],
     featured: false,
@@ -72,6 +73,7 @@ pricingGrid.innerHTML = SESSIONS.map(s => `
     <button class="btn ${s.featured ? "btn-accent" : "btn-primary"}" data-open-booking data-session="${s.id}">
       Book this session
     </button>
+    ${s.footnote ? `<p class="price-footnote${s.featured ? " price-footnote--on-dark" : ""}">${s.footnote}</p>` : ""}
   </article>
 `).join("");
 
@@ -104,7 +106,7 @@ const TITLES = {
 
 const state = {
   step: "session",
-  sessionId: "month",
+  sessionId: "individual",
   dayIndex: null,
   time: null,
   name: "",
@@ -378,3 +380,40 @@ function showToast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove("show"), 3500);
 }
+
+/* ---------- Steps Section ---------- */
+const STEPS_DATA = [
+  {
+    n: "01",
+    title: "Choose your time",
+    body: "Pick a slot that fits your week. Mornings, evenings, weekends - we keep it flexible.",
+    icon: `<svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 3v3M16 3v3"/><path d="M9.5 14l1.5 1.5 3.5-3.5"/></svg>`,
+  },
+  {
+    n: "02",
+    title: "Meet over video",
+    body: "Join a private, secure video room from any device. No app downloads, no waiting rooms.",
+    icon: `<svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10.5l5-3v9l-5-3z"/></svg>`,
+  },
+  {
+    n: "03",
+    title: "Talk it through",
+    body: "Share what's on your mind, in your heart and weighing down your spirit with a licensed psychotherapist who is honored to talk with you as often as you like.",
+    icon: `<svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg>`,
+  },
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("steps-grid");
+  if (!grid) return;
+  grid.innerHTML = STEPS_DATA.map(
+    (s) => `
+    <article class="step-card">
+      <span class="step-number" aria-hidden="true">${s.n}</span>
+      <div class="step-icon">${s.icon}</div>
+      <h3 class="step-title">${s.title}</h3>
+      <p class="step-body">${s.body}</p>
+    </article>
+  `
+  ).join("");
+});
