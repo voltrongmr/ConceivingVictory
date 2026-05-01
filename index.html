@@ -14,6 +14,9 @@
 
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" href="assets/logo.PNG" />
+  
+  <!-- Setmore Booking Widget -->
+  <script id="setmore-script" src="https://my.setmore.com/bookingpage/js/iframe/iframe-embed.js"></script>
 </head>
 <body>
   <!-- ============== NAVBAR ============== -->
@@ -308,91 +311,15 @@
     <div class="modal-card">
       <button class="modal-close" data-close-booking aria-label="Close">×</button>
 
-      <header class="modal-head" id="modal-head">
-        <div class="modal-head-row">
-          <div>
-            <p class="eyebrow" id="step-counter">Step 1 of 4</p>
-            <h3 class="modal-title" id="booking-title">Choose a session</h3>
-          </div>
-          <div class="modal-price">
-            <p class="muted-xs" id="summary-name">Individual Therapy OR Clinical Consultation</p>
-            <p class="price" id="summary-price">$180</p>
-          </div>
-        </div>
-        <div class="progress"><div id="progress-bar"></div></div>
+      <header class="modal-head">
+        <p class="eyebrow">Book your session</p>
+        <h3 class="modal-title" id="booking-title">Schedule with Setmore</h3>
       </header>
 
-      <div class="modal-body">
-        <!-- STEP: session -->
-        <div class="step" data-step="session">
-          <div class="session-list" id="session-list"></div>
-        </div>
-
-        <!-- STEP: datetime -->
-        <div class="step" data-step="datetime" hidden>
-          <label class="field-label">Date</label>
-          <div class="day-grid" id="day-grid"></div>
-          <label class="field-label" style="margin-top:1.5rem">Time</label>
-          <div class="time-grid" id="time-grid"></div>
-        </div>
-
-        <!-- STEP: details -->
-        <div class="step" data-step="details" hidden>
-          <div class="form-field">
-            <label for="f-name">Your name</label>
-            <input id="f-name" type="text" placeholder="How shall we greet you?" />
-          </div>
-          <div class="form-field">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <label>Contact method</label>
-              <div style="display: flex; gap: 0.25rem; background: hsl(38 22% 86%); padding: 0.25rem; border-radius: 0.5rem;">
-                <button id="contact-email-btn" type="button" class="contact-toggle active" data-type="email" style="padding: 0.375rem 0.75rem; border: none; background: transparent; cursor: pointer; border-radius: 0.375rem; font-size: 0.85rem; font-weight: 500; transition: background 0.2s;">Email</button>
-                <button id="contact-phone-btn" type="button" class="contact-toggle" data-type="phone" style="padding: 0.375rem 0.75rem; border: none; background: transparent; cursor: pointer; border-radius: 0.375rem; font-size: 0.85rem; font-weight: 500; transition: background 0.2s;">Phone</button>
-              </div>
-            </div>
-            <input id="f-contact" type="email" placeholder="you@example.com" />
-          </div>
-          <p class="muted" style="font-size: 0.85rem; margin: 1rem 0; padding: 0.75rem; background: hsl(90 25% 88%); border-radius: 0.5rem;">
-            We'll send your meeting link and session updates to your email or phone number.
-          </p>
-          <div class="form-field">
-            <label for="f-note">Anything you'd like your therapist to know? (optional)</label>
-            <textarea id="f-note" placeholder="A sentence or two is plenty."></textarea>
-          </div>
-        </div>
-
-        <!-- STEP: payment -->
-        <div class="step" data-step="payment" hidden>
-          <div class="summary-box">
-            <div class="row"><span class="muted">Session</span><span id="pay-session">—</span></div>
-            <div class="row" id="pay-when-row"><span class="muted">When</span><span id="pay-when">—</span></div>
-            <div class="row total"><span>Total today</span><span id="pay-total">—</span></div>
-          </div>
-          <div class="form-field">
-            <label for="f-card">Card number</label>
-            <input id="f-card" inputmode="numeric" placeholder="1234 5678 9012 3456" />
-          </div>
-          <div class="form-row">
-            <div class="form-field"><label for="f-exp">Expiry</label><input id="f-exp" placeholder="MM/YY" /></div>
-            <div class="form-field"><label for="f-cvc">CVC</label><input id="f-cvc" inputmode="numeric" placeholder="123" /></div>
-          </div>
-          <p class="lock-note">🔒  Demo checkout — no real charge.</p>
-        </div>
-
-        <!-- STEP: done -->
-        <div class="step done-step" data-step="done" hidden>
-          <div class="done-check">✓</div>
-          <h3 class="done-title">You're all set.</h3>
-          <p class="muted done-msg" id="done-msg">We've booked your session.</p>
-          <p class="done-sparkle">✦ Take a deep breath — we've got you.</p>
-          <button class="btn btn-primary btn-lg" data-close-booking style="margin-top:2rem">Close</button>
-        </div>
+      <div class="modal-body" style="padding: 0;">
+        <!-- Setmore Booking Widget -->
+        <div id="setmore-booking-widget"></div>
       </div>
-
-      <footer class="modal-foot" id="modal-foot">
-        <button class="btn btn-ghost" id="back-btn">← Back</button>
-        <button class="btn btn-primary" id="next-btn">Continue →</button>
-      </footer>
     </div>
   </div>
 

@@ -564,9 +564,9 @@ h1, h2, h3, h4, h5 {
 }
 .modal-card {
   position: relative;
-  width: 100%; max-width: 36rem;
+  width: 100%; max-width: 60rem;
   max-height: 92vh;
-  overflow-y: auto;
+  overflow: hidden;
   background: var(--card);
   border-radius: 1.5rem;
   border: 1px solid hsl(38 22% 86% / 0.6);
